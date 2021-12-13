@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-homework1",
+  "version": "1.0.0",
+  "description": "my first homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "home-server": "nodemon server.js",
+    "home-server_json": "nodemon server_json.js"
+  },
+  "author": "Ulasik Pavel",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
