@@ -15,7 +15,11 @@ module.exports.find = async function (req, res) {
 module.exports.findOne = async function (req, res) {
    try {
       const author = await Author.findById(req.params.id)
+      if (!author) {
+         res.status(400).send('The author with such a ip has not been found')
+      }
       res.status(200).json(author)
+      
    }
    catch (error) {
       res.status(400).json({ error: error.message })

@@ -13,9 +13,17 @@ const categorySchema = new Schema({
     excerpt: {
         type: String, 
     },
-    createdAt: {type: Date, immutable:true, default: () => Date.now},
+    createdAt: {
+        type: Date, 
+        immutable:true, 
+        default: () => {Date.now}
+    },
 
-    updatedAt: {type: Date, default: () => Date.now}
-})
+    updatedAt: {type: Date, default: () => {Date.now}}
+    
+    
+}, 
+{timestamps: true}
+)
 
 module.exports = mongoose.model('Category', categorySchema)

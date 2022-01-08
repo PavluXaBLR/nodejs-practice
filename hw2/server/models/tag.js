@@ -10,10 +10,17 @@ const tagSchema = new Schema({
         minlength: 2,
         trim: true,    
     },
-    createdAt: {type: Date, immutable:true, default: () => Date.now},
+    createdAt: {
+        type: Date, 
+        immutable:true, 
+        default: () => {Date.now}
+    },
 
-    updatedAt: {type: Date, default: () => Date.now},
-
-})
+    updatedAt: {type: Date, default: () => {Date.now}}
+    
+    
+}, 
+{timestamps: true}
+)
 
 module.exports = mongoose.model('Tag', tagSchema)

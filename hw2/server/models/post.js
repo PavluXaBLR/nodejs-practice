@@ -26,12 +26,17 @@ const postSchema = new Schema ({
         type: [mongoose.Types.ObjectId],
         ref: 'Author',
     },
-    createdAt: {type: Date, immutable:true, default: () => Date.now},
+    createdAt: {
+        type: Date, 
+        immutable:true, 
+        default: () => {Date.now}
+    },
 
-    updatedAt: {type: Date, default: () => Date.now}
-},
-    //  {timestamps: true}
-
+    updatedAt: {type: Date, default: () => {Date.now}}
+    
+    
+}, 
+{timestamps: true}
 )
 
 module.exports = mongoose.model('Post', postSchema)
