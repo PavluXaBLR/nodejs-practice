@@ -13,10 +13,13 @@ module.exports.find = async function (req, res) {
 module.exports.findOne = async function (req, res) {
    try {
       const category = await Category.findById(req.params.id)
+      
       res.status(200).json(category)
    }
    catch (error) {
-      res.status(400).json({ error: error.message })
+   
+       res.status(400).send('The category with such a ip has not been found')
+      // res.status(400).json({ error: error.message })
    }
 },
 
@@ -48,13 +51,11 @@ module.exports.remove = async function (req, res) {
    try {
 
       const category = await Category.findByIdAndRemove(req.params.id)
-      if (!category) {
-         res.status(404).send('Not found')
-      }
       
       res.status(200).json({ message: `The category was deleted`})
    }
    catch (error) {
-      res.status(400).json({ error: error.message })
+      res.status(400).send('Not found')
+      // res.status(400).json({ error: error.message })
    }
 }

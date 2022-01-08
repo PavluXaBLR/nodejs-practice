@@ -17,7 +17,8 @@ module.exports.findOne = async function (req, res) {
       res.status(200).json(post)
    }
    catch (error) {
-      res.status(400).json({ error: error.message })
+      res.status(400).send('The post with such a ip has not been found')
+      // res.status(400).json({ error: error.message })
    }
 },
 
@@ -47,16 +48,12 @@ module.exports.update = async function (req, res) {
 
 module.exports.remove = async function (req, res) {
    try {
-
       const post = await Post.findByIdAndRemove(req.params.id)
-      if (!post) {
-         res.status(404).send('Not found')
-      }
-      
       res.status(200).json({ message: `The post was deleted`})
    }
    catch (error) {
-      res.status(400).json({ error: error.message })
+      res.status(404).send('Not found')
+      // res.status(400).json({ error: error.message })
    }
 }
 
